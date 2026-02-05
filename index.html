@@ -9,6 +9,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -914,6 +918,41 @@
 
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
+
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable copy, cut, and select all keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+U (view source), Ctrl+S (save)
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'C' ||
+                              e.key === 'x' || e.key === 'X' ||
+                              e.key === 'a' || e.key === 'A' ||
+                              e.key === 'u' || e.key === 'U' ||
+                              e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+            // Also handle Cmd key for Mac users
+            if (e.metaKey && (e.key === 'c' || e.key === 'C' ||
+                              e.key === 'x' || e.key === 'X' ||
+                              e.key === 'a' || e.key === 'A' ||
+                              e.key === 'u' || e.key === 'U' ||
+                              e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable copy event
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
     </script>
 </body>
 </html>
