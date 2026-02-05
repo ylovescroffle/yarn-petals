@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yarn Petals - Partnership Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #5a4a4a;
+            background: #fff9f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        :root {
+            --primary-coral: #ff9999;
+            --cream-yellow: #fef4d4;
+            --soft-pink: #ffccd5;
+            --green-text: #2d5f3f;
+            --warm-bg: #fff9f5;
+            --text-dark: #5a4a4a;
+        }
+
+        header {
+            background: var(--cream-yellow);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--soft-pink);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(255, 153, 153, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: var(--green-text);
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-top: 10px;
+        }
+
+        .nav-tabs {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-tabs li {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .nav-tabs button {
+            width: 100%;
+            padding: 20px 15px;
+            background: transparent;
+            border: none;
+            border-bottom: 4px solid transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs button:hover {
+            background: var(--cream-yellow);
+            color: var(--green-text);
+        }
+
+        .nav-tabs button.active {
+            background: var(--cream-yellow);
+            color: var(--green-text);
+            border-bottom-color: var(--primary-coral);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 60px 0;
+            background: white;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 153, 153, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--green-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-coral);
+            border-radius: 2px;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-dark);
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: var(--cream-yellow);
+            border-left: 5px solid var(--primary-coral);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .warm-box {
+            background: linear-gradient(135deg, #fff9f5 0%, #fef4d4 100%);
+            border: 2px solid var(--soft-pink);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 153, 153, 0.1);
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .phase-card {
+            background: var(--cream-yellow);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-coral);
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 153, 153, 0.3);
+        }
+
+        .phase-card h3 {
+            color: var(--green-text);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .phase-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .phase-card li:before {
+            content: "🌸 ";
+            margin-right: 8px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 80px;
+            top: 50px;
+            bottom: -50px;
+            width: 2px;
+            background: var(--primary-coral);
+        }
+
+        .timeline-item:last-child:before {
+            display: none;
+        }
+
+        .timeline-date {
+            flex: 0 0 150px;
+            font-weight: bold;
+            color: var(--primary-coral);
+            font-size: 1.2em;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--cream-yellow);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-coral);
+            margin-left: 20px;
+        }
+
+        .timeline-content h3 {
+            color: var(--green-text);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .timeline-content .stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .stat strong {
+            color: var(--primary-coral);
+            display: block;
+            font-size: 1.3em;
+        }
+
+        .uni-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .uni-table th {
+            background: var(--cream-yellow);
+            color: var(--green-text);
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid var(--primary-coral);
+        }
+
+        .uni-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .uni-table tr:hover {
+            background: var(--warm-bg);
+        }
+
+        .financial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .financial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 153, 153, 0.15);
+            text-align: center;
+            border-top: 4px solid var(--primary-coral);
+        }
+
+        .financial-card h3 {
+            color: var(--green-text);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .financial-card .big-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-coral);
+            margin: 15px 0;
+        }
+
+        .question-box {
+            background: white;
+            border-left: 5px solid var(--primary-coral);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-box h4 {
+            color: var(--green-text);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .question-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .question-box li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .question-box li:before {
+            content: "💭";
+            position: absolute;
+            left: 0;
+        }
+
+        footer {
+            background: var(--cream-yellow);
+            color: var(--text-dark);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 3px solid var(--soft-pink);
+        }
+
+        footer h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--green-text);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            .logo { width: 80px; height: 80px; }
+            .nav-tabs li { min-width: 110px; }
+            .nav-tabs button { padding: 15px 10px; font-size: 0.9em; }
+            .timeline-item { flex-direction: column; }
+            .timeline-item:before { display: none; }
+            .timeline-date { margin-bottom: 10px; }
+            .timeline-content { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://yarnpetals.com/cdn/shop/files/Untitled_Artwork.png?v=1750742366&width=500" alt="Yarn Petals Logo" class="logo">
+            </div>
+            <h1>yarn petals</h1>
+            <p>Partnership Proposal - Year 1 Growth Plan</p>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <ul>
+            <li><button onclick="showTab('intro')" class="active">Introduction</button></li>
+            <li><button onclick="showTab('vision')">Vision</button></li>
+            <li><button onclick="showTab('timeline')">Timeline</button></li>
+            <li><button onclick="showTab('universities')">Universities</button></li>
+            <li><button onclick="showTab('realistic')">Realistic Numbers</button></li>
+            <li><button onclick="showTab('discussion')">Let's Talk</button></li>
+        </ul>
+    </nav>
+
+    <!-- TAB 1: INTRODUCTION -->
+    <div id="intro" class="tab-content active">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Why I Created This Plan</h2>
+
+                <div class="intro-text">
+                    <p>Hi! Thank you for considering me as your potential co-founder for yarn petals. I've put together this proposal not to overwhelm you with charts and numbers, but to show you that I've really thought about what this beautiful business could become.</p>
+
+                    <p>I know you've built something special over the past 3 years. You started with $298, achieved break-even in 7 days, and grew it into a brand with strong customer recognition at graduation ceremonies. That's incredible market validation, and I don't take it lightly that you're considering sharing this with me.</p>
+                </div>
+
+                <div class="warm-box">
+                    <h3 style="color: var(--green-text); margin-bottom: 20px; font-size: 1.5em;">What I Understand About Yarn Petals</h3>
+
+                    <p style="margin-bottom: 15px;"><strong>🌸 The Reality:</strong></p>
+                    <ul style="list-style: none; padding-left: 20px; margin-bottom: 20px;">
+                        <li style="margin: 8px 0;">• This is a small, beautiful side business - not a $100k empire (yet!)</li>
+                        <li style="margin: 8px 0;">• Your best month (December) was around $5,000 - and that was mostly one B2B customer</li>
+                        <li style="margin: 8px 0;">• Good months = around 20 units sold (which is actually quite good!)</li>
+                        <li style="margin: 8px 0;">• You invest $800-1,000 per supply order</li>
+                        <li style="margin: 8px 0;">• Platform costs are $80/month</li>
+                        <li style="margin: 8px 0;">• You do everything yourself - making, packing, posting, marketing</li>
+                    </ul>
+
+                    <p style="margin-bottom: 15px;"><strong>🌸 What I See:</strong></p>
+                    <ul style="list-style: none; padding-left: 20px;">
+                        <li style="margin: 8px 0;">• A brand with real customer loyalty (people come back year after year!)</li>
+                        <li style="margin: 8px 0;">• Beautiful products that make people happy</li>
+                        <li style="margin: 8px 0;">• Untapped potential (you haven't even tried markets properly, or pushed weddings)</li>
+                        <li style="margin: 8px 0;">• A business that needs consistent attention to grow - which you can't give because you're busy with life</li>
+                    </ul>
+                </div>
+
+                <div class="intro-text">
+                    <h3 style="color: var(--green-text); margin: 40px 0 20px; font-size: 1.8em;">Why I Think We Could Grow This Together</h3>
+
+                    <p><strong>My approach is realistic:</strong> I'm not promising to turn this into a $100k business overnight. These are occasion-based products (graduations, Mother's Day, weddings) - not something people buy regularly every month. Even successful yarn flower sellers on Etsy only average around 130-150 total sales after 3 years.</p>
+
+                    <p><strong>What I can do:</strong> Optimize conversion rates across seasonal touchpoints, capture a larger share of the graduation market, and build predictable revenue patterns around Australian calendar events. Not constant monthly sales, but strategic seasonal peaks with improved customer acquisition.</p>
+
+                    <p><strong>Here's my thinking:</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <p style="margin-bottom: 15px;"><strong>Why I believe I can help boost the performance:</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin: 10px 0;">🌸 <strong>Seasonal Marketing Strategy:</strong> Right now sales happen when orders come. I'd implement a structured marketing calendar aligned with Australian seasons - concentrated push in March-May (sunny weather + graduations) with strategic withdrawal before winter hits.</li>
+                        <li style="margin: 10px 0;">🌸 <strong>Product Mix Optimization:</strong> I noticed most grad sales are $10-12 singles. There's significant upsell opportunity to push the $30-35 small bouquets (same price as 3 singles, but higher perceived value). That alone could increase average order value by 20%.</li>
+                        <li style="margin: 10px 0;">🌸 <strong>B2B Partnership Development:</strong> Target 2-5 small business clients throughout the year for decorative display boxes - think grand opening arrangements for new cafes/salons, or wedding florist partnerships for ceremony/reception decoration displays. Low volume but premium pricing ($150-250 per arrangement).</li>
+                        <li style="margin: 10px 0;">🌸 <strong>Market Penetration:</strong> You did $700 in 6 hours at ONE pop-up. If we tried 3-4 good markets in sunny months, that's some extra revenue potential worth exploring.</li>
+                        <li style="margin: 10px 0;">🌸 <strong>Market Diversification:</strong> There might be room to explore wedding bouquets or other occasion markets - not sure yet, but worth testing for new revenue streams.</li>
+                        <li style="margin: 10px 0;">🌸 <strong>Consistent Brand Presence:</strong> Your Instagram is beautiful but inconsistent. Regular content calendar = improved top-of-mind awareness and organic reach.</li>
+                    </ul>
+                </div>
+
+                <div class="intro-text">
+                    <p>The rest of this proposal shows you HOW I'd approach each season, what I think is realistically achievable, and most importantly - what we need to discuss openly about money and fairness before we start anything.</p>
+
+                    <p style="margin-top: 30px; font-style: italic; color: var(--primary-coral);">Let's build something beautiful together - one yarn petal at a time. 🌸</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 2: VISION -->
+    <div id="vision" class="tab-content">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Year 1 Vision (Realistic Scale)</h2>
+
+                <div class="warm-box">
+                    <p style="font-size: 1.1em; text-align: center; margin-bottom: 20px;">
+                        <strong>Realistic Goal:</strong> Scale from ~240 units/year to 500-600 units/year<br>
+                        <strong>Focus:</strong> Maximize graduation season penetration + diversify revenue streams (weddings, markets)
+                    </p>
+                </div>
+
+                <div class="phase-grid">
+                    <div class="phase-card">
+                        <h3>Phase 1: Jan-May</h3>
+                        <h4 style="color: var(--primary-coral); margin-bottom: 15px;">SUMMER PUSH</h4>
+                        <ul>
+                            <li>Transition & learn (Jan-Feb) - maintain your current 15-20 units/month</li>
+                            <li>Small bouquet push campaign (educate customers on value)</li>
+                            <li>Easter sales (March)</li>
+                            <li>Hit graduations HARD (April-May) - aim for 50-60 units these months</li>
+                            <li>Try 4-6 markets while weather is good</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: bold; color: var(--green-text);">Target: 200-250 units total (5 months)</p>
+                    </div>
+
+                    <div class="phase-card">
+                        <h3>Phase 2: Jun-Aug</h3>
+                        <h4 style="color: var(--primary-coral); margin-bottom: 15px;">WINTER SURVIVAL</h4>
+                        <ul>
+                            <li>Accept this will be slow (Melbourne winter = people don't buy flowers)</li>
+                            <li>NO outdoor markets (waste of time in cold/dark)</li>
+                            <li>Focus on online + EOFY sales</li>
+                            <li>B2B outreach: Target 2-3 clients for grand opening decorative displays or wedding ceremony/reception decoration arrangements ($150-250 each)</li>
+                            <li>Keep posting, stay visible</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: bold; color: var(--green-text);">Target: 100-120 units total (3 months) + 2-3 B2B arrangements</p>
+                    </div>
+
+                    <div class="phase-card">
+                        <h3>Phase 3: Sep-Dec</h3>
+                        <h4 style="color: var(--primary-coral); margin-bottom: 15px;">PEAK SEASON</h4>
+                        <ul>
+                            <li>Father's Day push (September)</li>
+                            <li>Wedding collection launch (spring)</li>
+                            <li>November-December = ALL IN on graduations</li>
+                            <li>Aim for 70-80 units in Nov and Dec each</li>
+                            <li>Christmas markets + gifting</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: bold; color: var(--green-text);">Target: 220-260 units total (4 months)</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 40px;">
+                    <h3 style="color: var(--green-text); margin-bottom: 15px;">Year 1 Total: 520-630 units</h3>
+                    <p style="font-size: 1.1em;">This is <strong>2-2.5x your current volume</strong> but still achievable. For context, successful yarn flower sellers on Etsy typically have 130-150 sales after 3 years. We'd be aiming higher by focusing on Australian graduation season timing.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 3: TIMELINE -->
+    <div id="timeline" class="tab-content">
+        <section>
+            <div class="container">
+                <h2 class="section-title">12-Month Realistic Timeline</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">JAN-FEB</div>
+                    <div class="timeline-content">
+                        <h3>Transition & Maintain</h3>
+                        <p>I learn from you (bouquet making, supplier process, customer service). We maintain current operations - Valentine's as usual, no special push yet.</p>
+                        <div class="stats">
+                            <div class="stat"><strong>30-40</strong><span>units (2 months)</span></div>
+                            <div class="stat"><strong>$1,200</strong><span>revenue</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">MARCH</div>
+                    <div class="timeline-content">
+                        <h3>🌞 First Market Push + Easter</h3>
+                        <p>Try 2-3 markets (test which ones work). Easter campaign. Start educating customers about small bouquet value.</p>
+                        <div class="stats">
+                            <div class="stat"><strong>35-45</strong><span>units</span></div>
+                            <div class="stat"><strong>$1,400</strong><span>revenue</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">APRIL-MAY</div>
+                    <div class="timeline-content">
+                        <h3>🎓 Graduation Season 1</h3>
+                        <p><strong>THE BIG PUSH:</strong> UniMelb, RMIT, Monash, Deakin grads. Daily Instagram posts. Small bouquet campaign. Mother's Day overlap. 2-3 more markets.</p>
+                        <div class="stats">
+                            <div class="stat"><strong>110-130</strong><span>units (2 months)</span></div>
+                            <div class="stat"><strong>$4,000</strong><span>revenue</span></div>
+                        </div>
+                        <p style="margin-top: 15px; color: var(--primary-coral); font-weight: bold;">This is the make-or-break period. If we can't grow here, we know it won't work.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">JUN-AUG</div>
+                    <div class="timeline-content">
+                        <h3>❄️ Winter Survival Mode</h3>
+                        <p>Accept slower sales. No markets. Online focus + EOFY promotions. B2B outreach for 2-3 clients (grand opening decorative displays, wedding ceremony/reception decoration boxes at $150-250 each).</p>
+                        <div class="stats">
+                            <div class="stat"><strong>100-120</strong><span>units (3 months)</span></div>
+                            <div class="stat"><strong>$3,800</strong><span>revenue</span></div>
+                            <div class="stat"><strong>2-3</strong><span>B2B clients</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">SEP-OCT</div>
+                    <div class="timeline-content">
+                        <h3>🌸 Spring Recovery</h3>
+                        <p>Father's Day. Wedding collection launch (test market). Markets return. Build momentum toward peak season.</p>
+                        <div class="stats">
+                            <div class="stat"><strong>80-100</strong><span>units (2 months)</span></div>
+                            <div class="stat"><strong>$3,200</strong><span>revenue</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">NOV-DEC</div>
+                    <div class="timeline-content">
+                        <h3>🎓 PEAK GRADUATION SEASON</h3>
+                        <p><strong>ALL SYSTEMS GO:</strong> Every Melbourne uni graduates. Daily posts. Markets. Christmas gifting. This is our biggest revenue opportunity.</p>
+                        <div class="stats">
+                            <div class="stat"><strong>140-180</strong><span>units (2 months)</span></div>
+                            <div class="stat"><strong>$5,000</strong><span>revenue</span></div>
+                        </div>
+                        <p style="margin-top: 15px; color: var(--primary-coral); font-weight: bold;">Goal: Match or beat your Dec 2025 record ($5k) - but sustainably, not just one B2B customer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 4: UNIVERSITIES -->
+    <div id="universities" class="tab-content">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Melbourne University Graduation Dates 2026</h2>
+
+                <div class="intro-text">
+                    <p>I researched actual graduation schedules so we can plan marketing campaigns properly. Here's what I found:</p>
+                </div>
+
+                <h3 style="color: var(--green-text); margin: 40px 0 20px; font-size: 1.8em; text-align: center;">Semester 1 Graduations (April-May)</h3>
+
+                <table class="uni-table">
+                    <thead>
+                        <tr>
+                            <th>University</th>
+                            <th>Dates (Approx)</th>
+                            <th>Current Presence</th>
+                            <th>Opportunity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>University of Melbourne</strong></td>
+                            <td>Late April - Early May</td>
+                            <td>🟢 Strong</td>
+                            <td>Maintain + upsell small bouquets</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RMIT University</strong></td>
+                            <td>Mid-Late April</td>
+                            <td>🟢 STRONGEST</td>
+                            <td>Your best customer base - keep them loyal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monash University</strong></td>
+                            <td>Late May - Early June</td>
+                            <td>🟡 Good</td>
+                            <td>Expand to more faculties</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deakin University</strong></td>
+                            <td>Mid-Late May</td>
+                            <td>🟡 Small</td>
+                            <td>Growth opportunity (Burwood campus)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>La Trobe University</strong></td>
+                            <td>Late May</td>
+                            <td>🔴 Minimal</td>
+                            <td>Test market (Bundoora campus)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>Semester 1 Strategy:</strong> Focus 80% effort on UniMelb + RMIT (your proven markets). Test Monash + Deakin with 20% effort. If they respond well, great. If not, we know to focus elsewhere.</p>
+                    <p style="margin-top: 10px;"><strong>Realistic target:</strong> 110-130 units across April-May (compared to your current ~40)</p>
+                </div>
+
+                <h3 style="color: var(--green-text); margin: 60px 0 20px; font-size: 1.8em; text-align: center;">Semester 2 Graduations (November-December) - PEAK</h3>
+
+                <table class="uni-table">
+                    <thead>
+                        <tr>
+                            <th>University</th>
+                            <th>Dates (Approx)</th>
+                            <th>Volume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>University of Melbourne</strong></td>
+                            <td>Mid-Late November</td>
+                            <td>HIGH - Multiple ceremonies over 2 weeks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RMIT University</strong></td>
+                            <td>Mid-Late November</td>
+                            <td>HIGH - Your biggest revenue source</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monash University</strong></td>
+                            <td>Early-Mid December</td>
+                            <td>HIGH - Clayton campus (largest)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deakin University</strong></td>
+                            <td>November-December</td>
+                            <td>MEDIUM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>La Trobe, Swinburne, VU</strong></td>
+                            <td>November-December</td>
+                            <td>SMALL - Secondary targets</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="warm-box" style="margin-top: 30px;">
+                    <h3 style="color: var(--green-text); margin-bottom: 20px; text-align: center; font-size: 1.5em;">Peak Season Reality Check</h3>
+                    <p style="text-align: center; font-size: 1.2em; margin-bottom: 15px;">
+                        <strong>November-December = 35-40% of entire year's revenue</strong>
+                    </p>
+                    <p style="text-align: center;">
+                        Your December 2025 hit $5k. I think we can hit <strong>$2,500 in November + $2,500 in December</strong> by spreading sales across more universities instead of relying on one big B2B order.
+                    </p>
+                    <p style="text-align: center; margin-top: 15px;">
+                        <strong>Target:</strong> 70-90 units per month in Nov-Dec (vs your current 40-50)
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 5: REALISTIC NUMBERS -->
+    <div id="realistic" class="tab-content">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Realistic Financial Picture</h2>
+
+                <div class="intro-text">
+                    <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+                        Based on your actual current scale: ~20 units/month, $5k peak month, $800-1k supply orders
+                    </p>
+                </div>
+
+                <div class="financial-grid">
+                    <div class="financial-card">
+                        <h3>Current (Your 2025)</h3>
+                        <div class="big-number">~240</div>
+                        <p>units per year</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Seasonal peaks only</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Year 1 Target (Conservative)</h3>
+                        <div class="big-number">520-630</div>
+                        <p>units per year</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Better capture of occasions</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Growth</h3>
+                        <div class="big-number">2-2.5x</div>
+                        <p>your current volume</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Still smaller than Etsy top sellers</p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--green-text); font-size: 2em;">Revenue Estimate (Conservative)</h3>
+
+                <div class="financial-grid">
+                    <div class="financial-card">
+                        <h3>Annual Revenue</h3>
+                        <div class="big-number">$18-22k</div>
+                        <p>Based on avg $35/unit</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">Mix of singles ($10), small ($32), medium ($69)</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Supply Costs</h3>
+                        <div class="big-number">~$12k</div>
+                        <p>Materials + shipping</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">~65% of revenue (your supplier margin included)</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Gross Profit</h3>
+                        <div class="big-number">$6-10k</div>
+                        <p>Before other costs</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">This is what we split/work with</p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--green-text); font-size: 2em;">Operating Costs (Minimal)</h3>
+
+                <div class="financial-grid">
+                    <div class="financial-card">
+                        <h3>Platform Fees</h3>
+                        <div class="big-number">$960</div>
+                        <p>Shopify + Canva annual</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">$80/month × 12</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Packaging & Supplies</h3>
+                        <div class="big-number">~$800</div>
+                        <p>Boxes, ribbon, cards, stickers</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Minimal - we keep lean</p>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>Markets & Small Marketing</h3>
+                        <div class="big-number">~$1,200</div>
+                        <p>8-10 market stalls</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">$100-150 per market</p>
+                    </div>
+                </div>
+
+                <div class="warm-box" style="margin-top: 50px;">
+                    <h3 style="color: var(--green-text); text-align: center; margin-bottom: 20px; font-size: 1.8em;">The Honest Math</h3>
+
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <p style="margin: 15px 0; font-size: 1.1em;"><strong>Revenue:</strong> $18-22k</p>
+                        <p style="margin: 15px 0; font-size: 1.1em;"><strong>Supply costs:</strong> -$12k (to your supplier)</p>
+                        <p style="margin: 15px 0; font-size: 1.1em;"><strong>Operating costs:</strong> -$3k (platforms, packaging, markets)</p>
+                        <p style="margin: 15px 0; padding-top: 15px; border-top: 2px solid var(--primary-coral); font-size: 1.3em; font-weight: bold; color: var(--primary-coral);">
+                            <strong>Net available:</strong> $3,000-7,000
+                        </p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 30px; font-size: 1.1em;">
+                        This $3-7k represents available capital to compensate stakeholders for business development efforts over the year. <strong>Year 1 is about establishing operational systems and validating revenue patterns</strong> - not immediate profitability. For market context, top yarn flower sellers on Etsy took 3 years to reach 150 sales. We're pursuing accelerated growth by leveraging strategic timing around Australian graduation cycles.
+                    </p>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 40px;">
+                    <h4 style="color: var(--green-text); margin-bottom: 15px;">Why These Numbers Matter</h4>
+                    <p>I want you to see the reality: This is a small-scale business right now. If we grow it well in Year 1, we're setting up for Year 2 to hit $30-40k, which would give us each $5-10k for our time. By Year 3, we could realistically hit $50-60k and have something truly sustainable.</p>
+                    <p style="margin-top: 15px;"><strong>But Year 1?</strong> We're both investing time to build something, not making big money yet. I just want us both to go in with eyes open. 🌸</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 6: DISCUSSION -->
+    <div id="discussion" class="tab-content">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Let's Talk - What We Need to Discuss</h2>
+
+                <div class="intro-text">
+                    <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">
+                        I know you're considering a few options for yarn petals. Here are some things I'd love to chat about to see if this could work for both of us. 💕
+                    </p>
+                </div>
+
+                <div class="warm-box">
+                    <h3 style="color: var(--green-text); margin-bottom: 25px; font-size: 1.5em;">Questions for Our Chat</h3>
+
+                    <div style="line-height: 1.9; font-size: 1.05em;">
+                        <p style="margin-bottom: 20px;"><strong style="color: var(--primary-coral);">Current Stock:</strong> What's the value of your current inventory (finished bouquets + raw materials)? How do you plan to handle the transition of existing stock?</p>
+
+                        <p style="margin-bottom: 20px;"><strong style="color: var(--primary-coral);">Legal Setup:</strong> ABN - will I use your existing one or register a new one? And for the bank account - company/trust account or personal account?</p>
+
+                        <p style="margin-bottom: 20px;"><strong style="color: var(--primary-coral);">Your Vision:</strong> What's your plan for the first 3-6 months? What are your expectations for how this should work initially? When would be good timing for handover and training?</p>
+
+                        <p style="margin-bottom: 20px;"><strong style="color: var(--primary-coral);">Website & Branding:</strong> I really appreciate all the work you've put into building yarn petals! To help scale up and reach new customers, I'd like to update the website and refresh the branding a bit - maybe make it feel more professional and broader than one person's story. Are you happy for me to write new content and make some changes to the website? Anything specific you'd like me to keep the same?</p>
+
+                        <p style="margin-bottom: 20px;"><strong style="color: var(--primary-coral);">Your Availability:</strong> What's your free time like for training me initially?</p>
+                    </div>
+                </div>
+
+                <div class="warm-box" style="margin-top: 40px;">
+                    <h3 style="color: var(--green-text); text-align: center; margin-bottom: 20px; font-size: 1.5em;">A Small Note</h3>
+
+                    <div style="max-width: 800px; margin: 0 auto; font-size: 1em; line-height: 1.7;">
+                        <p style="margin-bottom: 15px;">I'm genuinely interested in yarn petals and can see its potential. At the same time, I need to be realistic about what I can commit without clear income structure.</p>
+
+                        <p style="margin-bottom: 15px;">I'd love to discuss how we can make this work fairly for both of us - where you feel good about transitioning something you built, and I feel okay about investing time and energy.</p>
+
+                        <p style="text-align: center; font-size: 1.1em; color: var(--primary-coral); font-weight: 600; margin-top: 25px;">Let's have an honest chat and see if we can find the right path forward. 💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.nav-tabs button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
